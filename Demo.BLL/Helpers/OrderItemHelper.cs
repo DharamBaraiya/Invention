@@ -1,10 +1,9 @@
 ﻿using Demo.BLL.Models;
 using Demo.Entity.Entity;
+using ESSAM_ACCOUNTANT.BLL.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Demo.BLL.Helpers
 {
@@ -47,8 +46,9 @@ namespace Demo.BLL.Helpers
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Logs.ErrorMsg("OrderItemHelper", "SaveOrder", ex.Message.ToString());
                 throw;
             }
             message = "Data Saved Successfully";
