@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helpers\Logs.cs" />
     <Compile Include="Helpers\OrderItemHelper.cs" />
     <Compile Include="Models\OrderVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
