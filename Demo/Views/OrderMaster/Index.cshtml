@@ -1,0 +1,110 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/Custom/OrderMaster.css" rel="stylesheet" />
+<h2>Index</h2>
+<style>
+    .tablecontainer table {
+        width: 100%;
+        border-collapse: collapse;
+        border-top: 1px solid #BFAEAE;
+        border-right: 1px solid #BFAEAE;
+    }
+
+    .tablecontainer th {
+        border-bottom: 2px solid #BFAEAE !important;
+    }
+
+    .tablecontainer th, .tablecontainer td {
+        text-align: left;
+        border-left: 1px solid #BFAEAE;
+        padding: 5px;
+        border-bottom: 1px solid #BFAEAE;
+    }
+
+    .form-group {
+        margin: 2px 2px !important;
+        display: inline-block;
+    }
+
+    .error {
+        color: red;
+    }
+</style>
+<div class="container">
+    <div class="master">
+        <div class="row">
+            <div class="form-group">
+                <label for="code">Code :</label>
+                <input type="text" class="form-control" id="txtCode" name="Code">
+            </div>
+            <div class="form-group">
+                <label for="date">Date :</label>
+                <input type="date" class="form-control" id="dteMDate" name="MDate" onchange="getDueDate()">
+            </div>
+            <div class="form-group">
+                <label for="dueDays">Due Days :</label>
+                <input type="number" class="form-control" min="0" id="txtDueDays" name="DueDays" onchange="getDueDate()">
+            </div>
+            <div class="form-group">
+                <label for="dueDate">Due Date :</label>
+                <input type="date" class="form-control" id="dteDueDate" name="DueDate">
+            </div>
+            <div class="form-group">
+                <label for="party">Party :</label>
+                <input type="text" class="form-control" id="txtParty" name="Party">
+            </div>
+        </div>
+    </div>
+    <div class="details">
+        <h3>Details</h3>
+        <div class="row">
+            <form id="frmItemDetails" method="post">
+                <div class="form-group">
+                    <label for="serialNo">SNo :</label>
+                    <input type="text" class="form-control" id="txtSNo" value="1" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="ItemName">Item :</label>
+                    <input type="text" class="form-control" id="txtItemName" name="ItemName">
+                </div>
+                <div class="form-group">
+                    <label for="qty">Qty :</label>
+                    <input type="number" class="form-control" id="txtQty" name="Qty" min="0" onchange="getTotalAmt()">
+                </div>
+                <div class="form-group">
+                    <label for="rate">Rate :</label>
+                    <input type="number" class="form-control" id="txtRate" name="Rate" min="0" onchange="getTotalAmt()">
+                </div>
+                <div class="form-group">
+                    <label for="amount">Amount :</label>
+                    <input type="text" class="form-control" id="txtAmount" name="Amount" disabled>
+                </div>
+                <div class="form-group">
+                    <button type="button" id="btnAdd" class="btn btn-primary">Add</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="orderItems" class="tablecontainer">
+    </div>
+
+    <div style="margin-top:5px;float:right">
+        <input type="button" id="btnSubmit" value="Submit" class="btn btn-primary" />
+    </div>
+</div>
+
+<div>
+    @{
+        Html.RenderPartial("_ItemDataDetails");
+    }
+</div>
+
+@section scripts{
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.0/css/jquery.dataTables.min.css" />
+    <script type="text/javascript" src="https://cdn.datatables.net/1.11.0/js/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/Custom/OrderMasterDetails.js"></script>
+}
